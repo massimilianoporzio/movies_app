@@ -6,6 +6,7 @@ class Movie {
     required this.overview,
     required this.title,
     required this.voteAverage,
+    required this.releaseDate,
   });
 
   final String backdropPath;
@@ -14,4 +15,5 @@ class Movie {
   final String overview;
   final String title;
   final double voteAverage;
+  final double releaseDate;
 }
