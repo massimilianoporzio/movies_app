@@ -9,4 +9,8 @@ class ApiConstants {
       "$baseUrl/movie/popular?api_key=$apiKey&language=it-IT&region=IT";
   static final String topRatedMoviesPath =
       "$baseUrl/movie/top_rated?api_key=$apiKey&language=it-IT&region=IT";
+  static const String baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+
+  //*metodi
+  static String imageUrl(String path) => '$baseImageUrl$path';
 }
