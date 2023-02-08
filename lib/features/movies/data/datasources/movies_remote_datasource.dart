@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/error/exceptions.dart';
+import 'package:movies_app/core/logger/logger.dart';
 import 'package:movies_app/core/network/api_constants.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/features/movies/data/models/movie_model.dart';
@@ -14,6 +15,7 @@ class MoviesRemoteDatasourceImpl implements MoviesRemoteDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response = await Dio().get(ApiConstants.nowPlayingMoviesPath);
+    // print(response);
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromJson(e))); //*LA API ritorna "results"
