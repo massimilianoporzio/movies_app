@@ -5,13 +5,13 @@ import '../entities/movie.dart';
 import '../repositories/base_movies_repository.dart';
 
 class GetPopularMoviesUseCase {
-  final MoviesRepository movieRepository;
+  final MoviesRepository moviesRepository;
 
   GetPopularMoviesUseCase({
-    required this.movieRepository,
+    required this.moviesRepository,
   });
 
   Future<Either<Failure, List<Movie>>> call() async {
-    return await movieRepository.getPopularMovies();
+    return await moviesRepository.getPopularMovies();
   }
 }

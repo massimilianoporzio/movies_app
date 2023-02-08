@@ -12,16 +12,13 @@ part 'movies_event.dart';
 part 'movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  MoviesBloc() : super(const NowPlayingMoviesState()) {
-    on<MoviesEvent>((event, emit) async {
-      MoviesRemoteDataSource moviesRemoteDataSource =
-          MoviesRemoteDatasourceImpl();
-      MoviesRepository moviesRepository =
-          MoviesRepositoryImpl(movieremoteDataSource: moviesRemoteDataSource);
+  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
 
+  MoviesBloc({required this.getNowPlayingMoviesUseCase})
+      : super(const NowPlayingMoviesState()) {
+    on<MoviesEvent>((event, emit) async {
       if (event is GetNowPlayingMoviesEvent) {
-        final result = await GetNowPlayingMoviesUseCase(
-            moviesRepository: moviesRepository)();
+        final result = await getNowPlayingMoviesUseCase();
         //*emetto evento per la UI
         emit(const NowPlayingMoviesState(nowPlayingState: RequestState.loaded));
         result.fold(
