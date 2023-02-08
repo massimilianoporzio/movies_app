@@ -5,13 +5,13 @@ import '../../../../core/error/failures.dart';
 import '../entities/movie.dart';
 
 class GetNowPlayingMoviesUseCase {
-  final BaseMovieRepository baseMovieRepository;
+  final MoviesRepository movieRepository;
 
   GetNowPlayingMoviesUseCase({
-    required this.baseMovieRepository,
+    required this.movieRepository,
   });
 
   Future<Either<Failure, List<Movie>>> call() async {
-    return await baseMovieRepository.getNowPlaying();
+    return await movieRepository.getNowPlaying();
   }
 }

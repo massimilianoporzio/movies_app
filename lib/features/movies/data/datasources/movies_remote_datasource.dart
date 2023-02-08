@@ -4,13 +4,13 @@ import 'package:movies_app/core/network/api_constants.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/features/movies/data/models/movie_model.dart';
 
-abstract class BaseMovieremoteDataSource {
+abstract class MoviesRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
 }
 
-class MovieRemoteDatasource implements BaseMovieremoteDataSource {
+class MoviesRemoteDatasourceImpl implements MoviesRemoteDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response = await Dio().get(ApiConstants.nowPlayingMoviesPath);
