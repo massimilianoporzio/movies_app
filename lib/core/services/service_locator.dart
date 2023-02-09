@@ -31,6 +31,11 @@ class ServiceLocator {
 
     //*bloc (come Factory: ogni pagina ha il suo bloc)
     sl.registerFactory<MoviesBloc>(
-        () => MoviesBloc(getNowPlayingMoviesUseCase: sl()));
+      () => MoviesBloc(
+        getNowPlayingMoviesUseCase: sl(),
+        getPopularMoviesUseCase: sl(),
+        getTopRatedMoviesUseCase: sl(),
+      ),
+    );
   }
 }
